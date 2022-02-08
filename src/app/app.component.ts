@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {UserServiceService} from "./user-service.service";
+import {User} from "./user";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'linkedin';
+
+
+
+
+  constructor(private userService: UserServiceService){
+
+  }
+
+
 }
+
