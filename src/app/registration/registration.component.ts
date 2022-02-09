@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Profile} from "../profile";
 import {User} from "../user";
 import {Router} from "@angular/router";
 import {UserServiceService} from "../user-service.service";
@@ -11,14 +10,14 @@ import {RegisterService} from "../register.service";
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
-  firstname = '';
-  lastname = '';
-  headline = '';
-  mail_id = '';
+  firstName = '';
+  lastName = '';
+  headLine = '';
+  mailId = '';
   dob = '';
   gender='';
   address = '';
-  phone_no = 0;
+  phoneNo = 0;
   username='';
   password='';
   cPassword='';
@@ -28,25 +27,16 @@ export class RegistrationComponent {
 
 
   addUser() {
+    let u = new User(this.username,this.password,this.firstName, this.lastName, this.headLine, this.mailId, this.dob,this.gender, this.address, this.phoneNo);
 
-    let p = new Profile(this.firstname, this.lastname, this.headline, this.mail_id, this.dob,this.gender, this.address, this.phone_no);
-    let u = new User(this.username,this.password);
-
-    this.userService.save(u).subscribe(responseData => {
+    this.rs.save(u).subscribe(responseData => {
       let user = responseData
-
-      p.user_id = user.id;
-      console.log(p,user,u);
-      this.rs.save(p).subscribe(responseData => {
-        let profile = responseData
-
-        if(profile!=null){
-          this.router.navigate(['/profile',profile.user_id]);
+        if(user!=null){
+          this.router.navigate(['/profile',user.id]);
         }
         else{
           this.i=1;
         }
-      });
     });
   }
 }

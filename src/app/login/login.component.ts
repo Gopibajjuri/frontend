@@ -15,6 +15,7 @@ export class LoginComponent {
   constructor(private userService: UserServiceService , private router: Router) {}
 
   checkDetails() {
+    // @ts-ignore
     let u = new User(this.username, this.password);
 
 

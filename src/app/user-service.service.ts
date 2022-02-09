@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "./user";
+import {UserProfile} from "./user-profile";
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +13,11 @@ export class UserServiceService {
     this.userUrl ='http://localhost:8080';
   }
 
-  public save(user: User): Observable<User>{
-    return this.http.post<User>(this.userUrl+'/create',user);
-  }
-
   public findByUsernameAndPassword(user: User):Observable<User> {
-    return this.http.post<User>(this.userUrl+'/welcome',user);
+    return this.http.post<User>(this.userUrl+'/check',user);
   }
 
-  public  findById(id :number): Observable<User>{
-     return this.http.post<User>(this.userUrl+"/profileUser",id);
+  public findById(userProfile: UserProfile): Observable<User>{
+     return this.http.post<User>(this.userUrl+"/profileUser",userProfile);
   }
 }

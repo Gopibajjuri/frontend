@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Profile} from "../profile";
 import {ActivatedRoute} from "@angular/router";
 import {User} from "../user";
 import {UserServiceService} from "../user-service.service";
-import {ProfileService} from "../profile.service";
+import {UserProfile} from "../user-profile";
 
 // @ts-ignore
 @Component({
@@ -13,17 +12,18 @@ import {ProfileService} from "../profile.service";
 })
 export class ProfileComponent implements OnInit{
 
-  p = new Profile("Bajjuri", "Gopi", "student", "gopi@gmail.com", "23/06/2001", "Male", "hjbnjnok", 798);
-  //profile: {firstname: string}
+  // @ts-ignore
+  u=new User();
   id=0;
 
-  constructor(private route : ActivatedRoute, private us:UserServiceService,private ps:ProfileService) { }
+  constructor(private route : ActivatedRoute, private us:UserServiceService) { }
 
   ngOnInit() {
     this.id=this.route.snapshot.params['id'];
-    this.ps.findByUserId(this.id).subscribe(responseBody=>{
-       this.p=responseBody
-      console.log(this.p);
+    let userProfile = new UserProfile(this.id);
+    this.us.findById(userProfile).subscribe(responseBody=>{
+       this.u=responseBody
+      console.log(this.u);
     });
   }
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Profile} from "./profile";
+import {User} from "./user";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class RegisterService {
     this.registerUrl='http://localhost:8080/register';
   }
 
-  public save(profile: Profile){
-      return this.http.post<Profile>(this.registerUrl,profile);
+  public save(user: User){
+      return this.http.post<User>(this.registerUrl,user);
   }
 
 }
