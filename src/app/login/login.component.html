@@ -2,22 +2,20 @@
 <h1 class="text-center">Welcome To LinkedIn</h1>
 <br>
 <form>
-
         <label>Username:</label>
         <input type="text" class="form-control" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
         <label>Password:</label>
         <input type="password" class="form-control" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
-
         <br>
-        <button
+      <div class="text-center">
+      <button
           class="btn btn-primary" type="submit"
-          (click)="checkDetails()">login</button>
-
-
-        <br>
+          (click)="checkDetails()"
+      >login</button>
+      <br>
         <p>(or)</p>
-        <p>To create new account</p>
-        <a href="/register">Register</a>
-
+        <p>To create new account
+        <a href="/register">Register</a></p>
+      </div>
         </form>
 

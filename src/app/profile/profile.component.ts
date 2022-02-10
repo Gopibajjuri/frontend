@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "../user";
 import {UserServiceService} from "../user-service.service";
 import {UserProfile} from "../user-profile";
+import {DataService} from "../data.service";
 
 // @ts-ignore
 @Component({
@@ -14,17 +15,16 @@ export class ProfileComponent implements OnInit{
 
   // @ts-ignore
   u=new User();
-  id=0;
 
-  constructor(private route : ActivatedRoute, private us:UserServiceService) { }
+  id=0;
+  constructor(private route : ActivatedRoute, private us:UserServiceService, public dataService: DataService, private router: Router) { }
 
   ngOnInit() {
-    this.id=this.route.snapshot.params['id'];
-    let userProfile = new UserProfile(this.id);
-    this.us.findById(userProfile).subscribe(responseBody=>{
-       this.u=responseBody
-      console.log(this.u);
-    });
+
+    if(this.dataService.user.username=='username'){
+      this.router.navigate(['']);
+    }
+
   }
 
 }

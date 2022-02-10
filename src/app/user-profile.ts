@@ -1,7 +1,7 @@
 export class UserProfile {
-  id: number;
+  user_id: number;
 
-  constructor(id: number) {
-    this.id = id;
+  constructor(user_id: number) {
+    this.user_id = user_id;
   }
 }

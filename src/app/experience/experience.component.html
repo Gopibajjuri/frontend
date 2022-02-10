@@ -1,0 +1,23 @@
+<div class=" panel panel-default">
+  <div class="panel panel-heading">
+
+    <h1 class="text-center">Experience Details</h1>
+    <div class="text-right">
+      <button class="btn-circle"
+              (click)="addExperience()">+
+      </button>
+    </div>
+  </div>
+  <div  *ngFor="let experience of ExperienceList">
+    <div class="panel panel-body">
+
+      <button class="btn btn-circle"
+              (click)="editDetails(experience)"><img src="https://image.flaticon.com/icons/png/512/45/45706.png" width="25" height="25">
+      </button>
+      <h2>{{experience.title}} ({{experience.headline}})</h2>
+      <h3>{{experience.companyName}},{{experience.location}}</h3>
+
+      <p>{{experience.start}} - {{experience.stop}}</p>
+    </div>
+  </div>
+</div>

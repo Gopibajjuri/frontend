@@ -3,6 +3,7 @@ import {User} from "../user";
 import {Router} from "@angular/router";
 import {UserServiceService} from "../user-service.service";
 import {RegisterService} from "../register.service";
+import {DataService} from "../data.service";
 
 @Component({
   selector: 'app-registration',
@@ -22,7 +23,7 @@ export class RegistrationComponent {
   password='';
   cPassword='';
   i=0;
-  constructor(private rs:RegisterService, private userService:UserServiceService, private router: Router) {
+  constructor(private rs:RegisterService, private userService:UserServiceService, private router: Router, private dataService: DataService) {
   }
 
 
@@ -32,7 +33,8 @@ export class RegistrationComponent {
     this.rs.save(u).subscribe(responseData => {
       let user = responseData
         if(user!=null){
-          this.router.navigate(['/profile',user.id]);
+          this.dataService.user=user;
+          this.router.navigate(['/profile']);
         }
         else{
           this.i=1;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserServiceService} from "../user-service.service";
 import {User} from "../user";
 import {Router} from "@angular/router";
+import {DataService} from "../data.service";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent {
   username='';
   password='';
   i=0;
-  constructor(private userService: UserServiceService , private router: Router) {}
+  constructor(private userService: UserServiceService , private router: Router, private dataServive: DataService) {}
 
   checkDetails() {
     // @ts-ignore
@@ -21,10 +22,10 @@ export class LoginComponent {
 
     this.userService.findByUsernameAndPassword(u).subscribe(responseData => {
       let user = responseData
-
+      console.log(user);
       if(user!=null){
-
-        this.router.navigate(['/profile',user.id]);
+        this.dataServive.user=user;
+        this.router.navigate(['/profile']);
       }
       else{
         this.router.navigate(['']);

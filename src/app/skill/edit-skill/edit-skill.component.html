@@ -1,0 +1,11 @@
+<form>
+  <label>Skill Name:</label>
+  <input type="text" class="form-control" [(ngModel)]="s.skill" [ngModelOptions]="{standalone: true}">
+
+  <button
+    class="btn btn-primary" type="submit"
+    (click)="editSkill()">submit</button>
+  <button
+    class="btn btn-danger" type="submit"
+    (click)="deleteSkill()">Delete</button>
+</form>

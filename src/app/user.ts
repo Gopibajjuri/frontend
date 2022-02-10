@@ -1,5 +1,5 @@
 export class User {
-  id: number | undefined;
+  private id: number | undefined;
   username: string;
   password: string;
   firstName: string;
@@ -24,4 +24,6 @@ export class User {
     this.address = address;
     this.phoneNo = phoneNo;
   }
+
+
 }

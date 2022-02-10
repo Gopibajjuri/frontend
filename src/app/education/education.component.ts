@@ -13,7 +13,7 @@ export class EducationComponent implements OnInit {
 
   EducationList: Education[] = [];
 
-  constructor(public dataService: DataService, private educationService: EducationService, private router: Router,private route: ActivatedRoute) {
+  constructor(public dataService: DataService, private educationService: EducationService, private router: Router) {
   }
 
   ngOnInit(): void {

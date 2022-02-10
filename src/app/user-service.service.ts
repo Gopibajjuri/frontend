@@ -18,6 +18,6 @@ export class UserServiceService {
   }
 
   public findById(userProfile: UserProfile): Observable<User>{
-     return this.http.post<User>(this.userUrl+"/profileUser",userProfile);
+     return this.http.post<User>(this.userUrl+"/profileDetails",userProfile);
   }
 }

@@ -5,19 +5,28 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <div class="navbar-header">
+          <div class="navbar-header" *ngIf="dataService.user.username=='username'">
             <a class="navbar-brand" href="#">
               <img src="https://logos-download.com/wp-content/uploads/2016/03/LinkedIn_Logo_2019-700x175.png" width="100" height="30" alt=""></a>
           </div>
+
+          <div class="navbar-header" *ngIf="dataService.user.username!='username'">
+            <a class="navbar-brand" [routerLink]="['/profile']">
+              <img src="https://logos-download.com/wp-content/uploads/2016/03/LinkedIn_Logo_2019-700x175.png" width="100" height="30" alt=""></a>
+          </div>
+
+          <div *ngIf="dataService.user.username!='username'">
+
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/profile">Profile</a></li>
-            <li><a href="#">Education</a></li>
-            <li><a href="#">Experience</a></li>
-            <li><a href="#">Skills</a></li>
+            <li><a [routerLink]="['/profile']">Profile</a></li>
+            <li><a [routerLink]="['/education']">Education</a></li>
+            <li><a [routerLink]="['/experience']">Experience</a></li>
+            <li><a [routerLink]="['/skill']">Skills</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="">Log Out</a></li>
           </ul>
+          </div>
         </div>
       </div>
     </div>

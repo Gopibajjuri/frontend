@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import {Education} from "../../education";
 
 @Component({
-  selector: 'app-add-education',
+  selector: 'app-add-experience',
   templateUrl: './add-education.component.html',
   styleUrls: ['./add-education.component.css']
 })
