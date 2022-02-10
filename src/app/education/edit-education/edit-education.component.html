@@ -1,0 +1,22 @@
+<form>
+  <label>Organization Name:</label>
+  <input type="text" class="form-control" [(ngModel)]="edu.school" [ngModelOptions]="{standalone: true}">
+  <label>Degree:</label>
+  <input type="text" class="form-control" [(ngModel)]="edu.degree" [ngModelOptions]="{standalone: true}">
+  <label>Field of Study:</label>
+  <input type="text" class="form-control" [(ngModel)]="edu.fieldOfStudy" [ngModelOptions]="{standalone: true}">
+  <label>Start date( in dd/mm/yyyy format):</label>
+  <input type="text" class="form-control"  [(ngModel)]="edu.start" [ngModelOptions]="{standalone: true}">
+  <label>End Date(in dd/mm/yyyy format):</label>
+  <input type="text" class="form-control" [(ngModel)]="edu.stop" [ngModelOptions]="{standalone: true}">
+  <label>Grade:</label>
+  <br>
+  <input type="text" class="form-control" [(ngModel)]="edu.grade" [ngModelOptions]="{standalone: true}">
+  <br>
+    <button
+      class="btn btn-primary" type="submit"
+      (click)="editEducation()">submit</button>
+  <button
+    class="btn btn-danger" type="submit"
+    (click)="deleteEducation()">Delete</button>
+</form>

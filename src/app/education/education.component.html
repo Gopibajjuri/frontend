@@ -1,0 +1,24 @@
+<div class=" panel panel-default">
+  <div class="panel panel-heading">
+
+    <h1 class="text-center">Education Details</h1>
+    <div class="text-right">
+    <button class="btn-circle"
+    (click)="addEducation()">+
+    </button>
+    </div>
+  </div>
+  <div  *ngFor="let education of EducationList">
+    <div class="panel panel-body">
+
+      <button class="btn btn-circle"
+              (click)="editDetails(education)"><img src="https://image.flaticon.com/icons/png/512/45/45706.png" width="25" height="25">
+      </button>
+
+      <h2>{{education.school}}</h2>
+      <h3>{{education.degree}}  ({{education.fieldOfStudy}})</h3>
+      <p>{{education.start}} - {{education.stop}}</p>
+      <strong>Grade: {{education.grade}}</strong>
+    </div>
+  </div>
+</div>
