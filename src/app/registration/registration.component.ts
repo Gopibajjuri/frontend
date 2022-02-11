@@ -34,7 +34,8 @@ export class RegistrationComponent {
       let user = responseData
         if(user!=null){
           this.dataService.user=user;
-          this.router.navigate(['/profile']);
+          this.dataService.logincheck=1;
+          this.router.navigate(['']);
         }
         else{
           this.i=1;

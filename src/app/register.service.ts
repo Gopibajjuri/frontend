@@ -15,4 +15,5 @@ export class RegisterService {
       return this.http.post<User>(this.registerUrl,user);
   }
 
+
 }

@@ -1,18 +1,19 @@
 <form>
   <label>Organization Name:</label>
-  <input type="text" class="form-control" [(ngModel)]="exp.title" [ngModelOptions]="{standalone: true}">
+  <input type="text" class="form-control"  [(ngModel)]="exp.title" [ngModelOptions]="{standalone: true}">
   <label>Degree:</label>
-  <input type="text" class="form-control" [(ngModel)]="exp.companyName" [ngModelOptions]="{standalone: true}">
+  <input type="text" class="form-control"  [(ngModel)]="exp.companyName" [ngModelOptions]="{standalone: true}">
   <label>Field of Study:</label>
-  <input type="text" class="form-control" [(ngModel)]="exp.location" [ngModelOptions]="{standalone: true}">
+  <input type="text" class="form-control"  [(ngModel)]="exp.location" [ngModelOptions]="{standalone: true}" >
   <label>Start date( in dd/mm/yyyy format):</label>
-  <input type="text" class="form-control"  [(ngModel)]="exp.start" [ngModelOptions]="{standalone: true}">
+  <input type="text" class="form-control"  [(ngModel)]="exp.start" [ngModelOptions]="{standalone: true}" >
   <label>End Date(in dd/mm/yyyy format):</label>
-  <input type="text" class="form-control" [(ngModel)]="exp.stop" [ngModelOptions]="{standalone: true}">
-  <label>Grade:</label>
+  <input type="text" class="form-control"  [(ngModel)]="exp.stop" [ngModelOptions]="{standalone: true}">
+  <label>headline:</label>
   <br>
-  <input type="text" class="form-control" [(ngModel)]="exp.headline" [ngModelOptions]="{standalone: true}">
+  <input type="text" class="form-control"   [(ngModel)]="exp.headline" [ngModelOptions]="{standalone: true}">
   <br>
+
   <button
     class="btn btn-primary" type="submit"
     (click)="editExperience()">submit</button>

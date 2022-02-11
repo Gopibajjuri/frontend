@@ -18,6 +18,14 @@ export class UserServiceService {
   }
 
   public findById(userProfile: UserProfile): Observable<User>{
-     return this.http.post<User>(this.userUrl+"/profileDetails",userProfile);
+     return this.http.post<User>(this.userUrl+"/profile/find",userProfile);
   }
+
+  public saveProfile(user: User):Observable<User>{
+    return this.http.post<User>(this.userUrl+"/profile/send",user);
+  }
+  public deleteProfile(user:User){
+    return this.http.post(this.userUrl+"profile/delete",user);
+  }
+
 }

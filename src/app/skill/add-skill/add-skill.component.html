@@ -1,8 +1,14 @@
 <form>
   <label>Skill Name:</label>
-  <input type="text" class="form-control" [(ngModel)]="skill" [ngModelOptions]="{standalone: true}">
+  <input type="text" class="form-control" required [(ngModel)]="skill" [ngModelOptions]="{standalone: true}"  #name="ngModel">
 
+  <div *ngIf="name.errors?.['required']">
+    <p class="text-danger"> skill is required.</p>
+  </div>
+  <div *ngIf="!(name.errors?.['required'])">
   <button
     class="btn btn-primary" type="submit"
     (click)="addSkill()">submit</button>
+  </div>
+
 </form>

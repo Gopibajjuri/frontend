@@ -1,21 +1,42 @@
-
-<h1 class="text-center">Welcome To LinkedIn</h1>
+<h1 class="text-center" xmlns="http://www.w3.org/1999/html">Welcome To LinkedIn</h1>
 <br>
 <form>
-        <label>Username:</label>
-        <input type="text" class="form-control" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
-        <label>Password:</label>
-        <input type="password" class="form-control" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
-        <br>
+  <div *ngIf="i==1">
+    <p class="text-danger">Invalid Credentials</p>
+  </div>
+  <div *ngIf="l==1">
+    <p class="text-danger">Please Login </p>
+  </div>
+<table class="center">
+  <tr>
+    <td>
+      <label>Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+    </td>
+    <td>
+      <input type="text" class="form-control"  [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+    </td>
+  </tr>
+  <br>
+  <tr>
+    <td>
+      <label>Password:</label>
+    <td>
+    <input type="password" class="form-control" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" >
+    </td>
+  </tr>
+
+</table>
+<br>
       <div class="text-center">
-      <button
+
+          <button
           class="btn btn-primary" type="submit"
           (click)="checkDetails()"
-      >login</button>
-      <br>
+          >login</button>
+
+        <br>
         <p>(or)</p>
         <p>To create new account
         <a href="/register">Register</a></p>
       </div>
-        </form>
-
+</form>

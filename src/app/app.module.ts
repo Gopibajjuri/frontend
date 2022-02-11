@@ -19,11 +19,13 @@ import { EditExperienceComponent } from './experience/edit-experience/edit-exper
 import { SkillComponent } from './skill/skill.component';
 import { EditSkillComponent } from './skill/edit-skill/edit-skill.component';
 import { AddSkillComponent } from './skill/add-skill/add-skill.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 
 const routes : Routes = [
   { path :'', component : LoginComponent },
   { path :'register', component : RegistrationComponent},
   { path :'profile', component : ProfileComponent},
+  { path :'editProfile', component : EditProfileComponent},
   { path :'education', component : EducationComponent},
   { path :'experience', component : ExperienceComponent},
   { path :'editEducation', component : EditEducationComponent},
@@ -53,6 +55,7 @@ const routes : Routes = [
     SkillComponent,
     EditSkillComponent,
     AddSkillComponent,
+    EditProfileComponent,
 
   ],
     imports: [

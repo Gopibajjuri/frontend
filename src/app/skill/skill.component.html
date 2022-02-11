@@ -10,10 +10,11 @@
   </div>
   <div  *ngFor="let skill of SkillList">
     <div class="panel panel-body">
-
+      <h2>{{skill.skill}}</h2>
+      <div class="text-right"></div>
       <button class="btn btn-circle"
               (click)="editDetails(skill)"><img src="https://image.flaticon.com/icons/png/512/45/45706.png" width="25" height="25">
       </button>
-      <h2>{{skill.skill}}</h2>
+    </div>
   </div>
 </div>

@@ -1,11 +1,17 @@
+<div class="container-fluid">
+  <h1>{{dataService.user.firstName}}  {{dataService.user.lastName}}</h1>
 
-<h1>{{dataService.user.firstName}}  {{dataService.user.lastName}}</h1>
-
-<p>{{dataService.user.headLine}}<p>
-<h4>Mail Id:         {{dataService.user.mailId}}</h4>
-<h4>Date of Birth:   {{dataService.user.dob}}</h4>
-<h4>Gender:          {{dataService.user.gender}}</h4>
-<h4>Address:         {{dataService.user.address}}</h4>
-<h4>phone Number:    {{dataService.user.phoneNo}}</h4>
+  <p>{{dataService.user.headLine}}<p>
+  <h4>Mail Id:         {{dataService.user.mailId}}</h4>
+  <h4>Date of Birth:   {{dataService.user.dob}}</h4>
+  <h4>Gender:          {{dataService.user.gender}}</h4>
+  <h4>Address:         {{dataService.user.address}}</h4>
+  <h4>phone Number:    {{dataService.user.phoneNo}}</h4>
 
 
+  <div class="text-right">
+    <button class="btn btn-circle"
+            (click)="editProfile(dataService.user)"><img src="https://image.flaticon.com/icons/png/512/45/45706.png" width="25" height="25">
+    </button>
+  </div>
+</div>
