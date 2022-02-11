@@ -1,15 +1,20 @@
+<h1 class="text-center">Edit Skill Details</h1>
 <form>
-  <label>Skill Name:</label>
-  <input type="text" class="form-control" required [(ngModel)]="s.skill" [ngModelOptions]="{standalone: true}" #name="ngModel">
-  <div *ngIf="name.errors?.['required']">
-    <p class="text-danger"> skill is required.</p>
+  <table class="center">
+    <tr>
+      <th><label>Skill Name:
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
+      <th><input type="text" class="form-control" required [(ngModel)]="s.skill" [ngModelOptions]="{standalone: true}" #name="ngModel"></th>
+  </tr>
+  </table>
+<br>
+  <div class="text-center" type="submit">
+    <button class="btn btn-primary"
+      (click)="editSkill()">Submit
+    </button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-danger"
+              (click)="deleteSkill()">Delete
+      </button>
   </div>
-  <div *ngIf="!(name.errors?.['required'])">
-  <button
-    class="btn btn-primary" type="submit"
-    (click)="editSkill()">submit</button>
-  </div>
-  <button
-    class="btn btn-danger" type="submit"
-    (click)="deleteSkill()">Delete</button>
 </form>

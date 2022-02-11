@@ -1,18 +1,42 @@
+<h1 class="text-center">Add Experience Details</h1>
+<br>
 <form>
-  <label>Title:</label>
-  <input type="text" class="form-control"  [(ngModel)]="title" [ngModelOptions]="{standalone: true}" >
-  <label>Company Name:</label>
-  <input type="text" class="form-control"  [(ngModel)]="companyName" [ngModelOptions]="{standalone: true}" >
-  <label>location:</label>
-  <input type="text" class="form-control"  [(ngModel)]="location" [ngModelOptions]="{standalone: true}" >
-  <label>Start date( in dd/mm/yyyy format):</label>
-  <input type="text" class="form-control"  [(ngModel)]="start" [ngModelOptions]="{standalone: true}" >
-  <label>End Date(in dd/mm/yyyy format):</label>
-  <input type="text" class="form-control"  [(ngModel)]="stop" [ngModelOptions]="{standalone: true}" >
-  <label>headline:</label>
-  <input type="text" class="form-control"  [(ngModel)]="headline" [ngModelOptions]="{standalone: true}">
-  <button
-    class="btn btn-primary" type="submit"
-    (click)="addExperience()">submit</button>
+  <table class="center">
+    <tr>
+      <th><label>Title</label></th>
+      <td><input type="text" class="form-control"  [(ngModel)]="title" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>Company Name:</label></th>
+      <td><input type="text" class="form-control"  [(ngModel)]="companyName" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>Location:</label></th>
+      <td><input type="text" class="form-control"  [(ngModel)]="location" [ngModelOptions]="{standalone: true}" ></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>Start date<p>(in dd/mm/yyyy format):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></label></th>
+      <td><input type="text" class="form-control"  [(ngModel)]="start" [ngModelOptions]="{standalone: true}" ></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>End Date<p>(in dd/mm/yyyy format):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></label></th>
+      <td><input type="text" class="form-control"  [(ngModel)]="stop" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>Headline:</label></th>
+      <td><input type="text" class="form-control"   [(ngModel)]="headline" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
 
+  </table>
+  <br>
+  <div class="text-center">
+    <button
+      class="btn btn-primary" type="submit"
+      (click)="addExperience()">submit</button>
+  </div>
 </form>

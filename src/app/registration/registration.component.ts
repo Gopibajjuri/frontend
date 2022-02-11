@@ -42,4 +42,8 @@ export class RegistrationComponent {
         }
     });
   }
+
+  back(){
+    this.router.navigate(['']);
+  }
 }

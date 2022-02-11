@@ -1,21 +1,42 @@
-
+<h1 class="text-center">Add Education Details</h1>
+<br>
 <form>
-  <label>Organization Name:</label>
-  <input type="text" class="form-control" required [(ngModel)]="school" [ngModelOptions]="{standalone: true}" #name="ngModel">
-  <label>Degree:</label>
-  <input type="text" class="form-control" required [(ngModel)]="degree" [ngModelOptions]="{standalone: true}" #name="ngModel">
-  <label>Field of Study:</label>
-  <input type="text" class="form-control" required [(ngModel)]="fieldOfStudy" [ngModelOptions]="{standalone: true}" #name="ngModel">
-  <label>Start date( in dd/mm/yyyy format):</label>
-  <input type="text" class="form-control"  [(ngModel)]="start" [ngModelOptions]="{standalone: true}" >
-  <label>End Date(in dd/mm/yyyy format):</label>
-  <input type="text" class="form-control"  [(ngModel)]="stop" [ngModelOptions]="{standalone: true}" >
-  <label>Grade:</label>
-  <br>
-  <input type="text" class="form-control"  [(ngModel)]="grade" [ngModelOptions]="{standalone: true}" >
-  <br>
+  <table class="center">
+    <tr>
+      <th><label>Organization Name</label></th>
+      <td><input type="text" class="form-control"  [(ngModel)]="school" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>Degree:</label></th>
+      <td><input type="text" class="form-control"  [(ngModel)]="degree" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>Field of Study:</label></th>
+      <td><input type="text" class="form-control"  [(ngModel)]="fieldOfStudy" [ngModelOptions]="{standalone: true}" ></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>Start date<p>(in dd/mm/yyyy format):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></label></th>
+      <td><input type="text" class="form-control"  [(ngModel)]="start" [ngModelOptions]="{standalone: true}" ></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>End Date<p>(in dd/mm/yyyy format):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></label></th>
+      <td><input type="text" class="form-control"  [(ngModel)]="stop" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>Grade:</label></th>
+      <td><input type="text" class="form-control"   [(ngModel)]="grade" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
 
-  <button
-    class="btn btn-primary" type="submit"
-    (click)="addEducation()">submit</button>
+  </table>
+  <br>
+  <div class="text-center">
+    <button
+      class="btn btn-primary" type="submit"
+      (click)="addEducation()">submit</button>
+  </div>
 </form>

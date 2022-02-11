@@ -1,34 +1,80 @@
-<form>
-  <label>First Name:</label>
-  <input type="text" class="form-control"   [(ngModel)]="firstName" [ngModelOptions]="{standalone: true}" >
-  <label>Last Name:</label>
-  <input type="text" class="form-control"  [(ngModel)]="lastName" [ngModelOptions]="{standalone: true}">
-  <label>Head Line:</label>
-  <input type="text" class="form-control"  [(ngModel)]="headLine" [ngModelOptions]="{standalone: true}" >
-  <label>Mail ID:</label>
-  <input type="text" class="form-control"  [(ngModel)]="mailId" [ngModelOptions]="{standalone: true}" >
-  <label>Date of Birth(in dd/mm/yyyy format):</label>
-  <input type="text" class="form-control"  [(ngModel)]="dob" [ngModelOptions]="{standalone: true}">
-  <label>Gender:</label>
-  <br>
-  <input type="radio" name="sex" value="m" checked [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">Male
-  <br>
+<button
+class="btn btn-group" type="submit"
+(click)="back()">Back</button>
 
-  <input type="radio" name="sex" value="f" [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">Female
+<h1 class="text-center">Registration</h1>
+<br>
+<form>
+  <table class="center">
+    <tr>
+    <th><label>First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
+  <td><input type="text" class="form-control"   [(ngModel)]="firstName" [ngModelOptions]="{standalone: true}" ></td>
+    </tr>
+    <br>
+    <tr>
+    <th><label>Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
+  <td><input type="text" class="form-control"  [(ngModel)]="lastName" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>Head Line:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
+      <td><input type="text" class="form-control"  [(ngModel)]="headLine" [ngModelOptions]="{standalone: true}" ></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>Mail ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
+      <td><input type="text" class="form-control"  [(ngModel)]="mailId" [ngModelOptions]="{standalone: true}" ></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>Date of Birth<p>(in dd/mm/yyyy format):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></label></th>
+      <td> <input type="text" class="form-control"  [(ngModel)]="dob" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
+    <br>
+    <tr>
+      <th> <label>Gender:</label></th>
+      <td><input type="radio" name="sex" value="m" checked [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="sex" value="f" [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">Female</td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>Address:</label></th>
+      <td><input type="text" class="form-control"  [(ngModel)]="address" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
+    <br>
+
+    <tr>
+    <th><label>Phone Number:</label></th>
+    <td><input type="text" class="form-control"  [(ngModel)]="phoneNo" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
+    <br>
+  <tr>
+    <th>
+      <label>Username:</label>
+    </th>
+    <td>
+      <input type="text" class="form-control"  [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+    </td>
+  </tr>
+    <br>
+    <tr>
+      <th> <label>Enter Password:</label></th>
+      <td> <input type="password" class="form-control"  [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
+    <br>
+    <tr>
+      <th><label>Confirm Password:</label></th>
+      <td><input type="password" class="form-control"  [(ngModel)]='cPassword' [ngModelOptions]="{standalone: true}"></td>
+    </tr>
+</table>
+
+<div class="text-center">
+  <div *ngIf="password!=cPassword"><p class="text-danger">passwords didn't match</p></div>
   <br>
-  <label>Address:</label>
-  <input type="text" class="form-control"  [(ngModel)]="address" [ngModelOptions]="{standalone: true}">
-  <label>Phone Number:</label>
-  <input type="text" class="form-control"  [(ngModel)]="phoneNo" [ngModelOptions]="{standalone: true}">
-  <label>Username:</label>
-  <input type="text" class="form-control"  [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
-  <label>Enter Password:</label>
-  <input type="password" class="form-control"  [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
-  <label>Confirm Password:</label>
-  <input type="password" class="form-control"  [(ngModel)]='cPassword' [ngModelOptions]="{standalone: true}">
-  <div *ngIf="password!=cPassword">passwords didn't match</div>
-  <br>
+  <div *ngIf="password==cPassword">
   <button
     class="btn btn-primary" type="submit"
     (click)="addUser()">Register</button>
+  </div>
+</div>
 </form>

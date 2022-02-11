@@ -26,5 +26,8 @@ export class EditProfileComponent implements OnInit {
       }
     })
   }
+  back(){
+    this.router.navigate(["/profile"])
+  }
 
 }
