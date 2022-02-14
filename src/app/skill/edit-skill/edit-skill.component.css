@@ -7,3 +7,25 @@
 .form-control{
   width: 500px;
 }
+input.ng-invalid.ng-touched{
+  border: 1px solid red;
+}
+.backdrop{
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 500vw;
+  height: 500vh;
+  background: rgba(0,0,0,0.75);
+  z-index: 50;
+}
+.alertbox{
+  position: fixed;
+  top: 30vh;
+  left: 20vw;
+  width: 100vw;
+  padding: 20px;
+  z-index:100;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.26);
+}

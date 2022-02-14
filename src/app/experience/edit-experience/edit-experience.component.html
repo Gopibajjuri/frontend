@@ -1,46 +1,52 @@
+<button class="btn btn-default" type="submit"
+        (click)="back()">Back</button>
 <h1 class="text-center">Edit Experience Details</h1>
 <br>
-<form>
+<form (ngSubmit)="editExperience()" #f=ngForm>
   <table class="center">
-  <tr>
-    <th><label>Title:</label></th>
-    <td><input type="text" class="form-control"  [(ngModel)]="exp.title" [ngModelOptions]="{standalone: true}"></td>
-  </tr>
+    <tr>
+      <th><label>Title</label></th>
+      <td><input type="text" class="form-control"  name="title" [ngModel]="exp.title" required #title=ngModel>
+        <span class="text-danger" *ngIf="!title.valid && title.touched">Enter valid data</span></td>
+    </tr>
     <br>
     <tr>
       <th><label>Company Name:</label></th>
-      <td><input type="text" class="form-control"  [(ngModel)]="exp.companyName" [ngModelOptions]="{standalone: true}"></td>
+      <td><input type="text" class="form-control"  name="companyName" [ngModel]="exp.companyName" required #companyName=ngModel>
+        <span class="text-danger" *ngIf="!companyName.valid && companyName.touched">Enter valid data</span></td>
     </tr>
     <br>
     <tr>
       <th><label>Location:</label></th>
-      <td><input type="text" class="form-control"  [(ngModel)]="exp.location" [ngModelOptions]="{standalone: true}" ></td>
+      <td><input type="text" class="form-control"  name="location" [ngModel]="exp.location" required #location=ngModel>
+        <span class="text-danger" *ngIf="!location.valid && location.touched">Enter valid data</span></td>
     </tr>
     <br>
     <tr>
       <th><label>Start date<p>(in dd/mm/yyyy format):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></label></th>
-      <td><input type="text" class="form-control"  [(ngModel)]="exp.start" [ngModelOptions]="{standalone: true}" ></td>
+      <td><input type="date" class="form-control"  name="start"  [ngModel]="exp.start" required #start=ngModel>
+        <span class="text-danger" *ngIf="!start.valid && start.touched">Enter valid data</span></td>
     </tr>
     <br>
     <tr>
       <th><label>End Date<p>(in dd/mm/yyyy format):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></label></th>
-      <td><input type="text" class="form-control"  [(ngModel)]="exp.stop" [ngModelOptions]="{standalone: true}"></td>
-    </tr>
+      <td><input type="date" class="form-control"  name="stop"  [ngModel]="exp.stop"  required #stop=ngModel>
+        <span class="text-danger" *ngIf="!stop.valid && stop.touched">Enter valid data</span></td>    </tr>
     <br>
     <tr>
       <th><label>Headline:</label></th>
-      <td><input type="text" class="form-control"   [(ngModel)]="exp.headline" [ngModelOptions]="{standalone: true}"></td>
-    </tr>
+      <td><input type="text" class="form-control"   name="headline" [ngModel]="exp.headline" required #headline=ngModel>
+        <span class="text-danger" *ngIf="!headline.valid && headline.touched">Enter valid data</span></td>    </tr>
 
   </table>
   <br>
   <div class="text-center">
-  <button
-    class="btn btn-primary" type="submit"
-    (click)="editExperience()">submit</button>
+    <button
+      class="btn btn-primary" type="submit"
+      [disabled]="!f.valid">Submit</button>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <button
-    class="btn btn-danger" type="submit"
-    (click)="deleteExperience()">Delete</button>
+    <button
+      class="btn btn-danger" type="submit"
+      (click)="deleteExperience()">Delete</button>
   </div>
 </form>

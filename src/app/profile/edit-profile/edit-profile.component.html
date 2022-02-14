@@ -1,47 +1,57 @@
+<button
+  class="btn btn-default" type="submit"
+  (click)="back()">Back</button>
 <h1 class="text-center">Edit Profile Details</h1>
 <br>
 
-<form>
+<form (ngSubmit)="editProfile()" #f=ngForm>
   <table class="center">
     <tr>
       <th><label>First Name:</label></th>
-      <td><input type="text" class="form-control"  [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}" ></td>
+      <td><input type="text" class="form-control"  name="firstName" [ngModel]="user.firstName" required #firstName=ngModel>
+        <span class="text-danger" *ngIf="!firstName.valid && firstName.touched">Enter valid data</span></td>
     </tr>
     <br>
     <tr>
     <th><label>Last Name:</label></th>
-  <td><input type="text" class="form-control"  [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}" ></td>
+  <td><input type="text" class="form-control"  name="lastName" [ngModel]="user.lastName"  required #lastName=ngModel>
+    <span class="text-danger" *ngIf="!lastName.valid && lastName.touched">Enter valid data</span></td>
     </tr>
     <br>
     <tr>
   <th><label>Head Line:</label></th>
-  <td><input type="text" class="form-control"  [(ngModel)]="user.headLine" [ngModelOptions]="{standalone: true}"></td>
+  <td><input type="text" class="form-control"  name="headLine" [ngModel]="user.headLine"  required #headLine=ngModel>
+    <span class="text-danger" *ngIf="!headLine.valid && headLine.touched">Enter valid data</span></td>
     </tr>
     <br>
     <tr>
     <th><label>Mail ID:</label></th>
-    <td><input type="text" class="form-control"  [(ngModel)]="user.mailId" [ngModelOptions]="{standalone: true}" ></td>
+    <td><input type="text" class="form-control"  name="mailId" [ngModel]="user.mailId"  required email #mailId=ngModel>
+      <span class="text-danger" *ngIf="!mailId.valid && mailId.touched">Enter valid data</span></td>
     </tr>
     <br>
     <tr>
     <th><label>Date of Birth<p>(in dd/mm/yyyy format):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></label></th>
-    <td><input type="text" class="form-control"  [(ngModel)]="user.dob" [ngModelOptions]="{standalone: true}" ></td>
+    <td><input type="date" class="form-control"  name="dob"  [ngModel]="user.dob"  required #dob=ngModel>
+      <span class="text-danger" *ngIf="!dob.valid && dob.touched">Enter valid data</span></td>
     </tr>
     <br>
     <tr>
     <th><label>Gender:</label></th>
-    <td><input type="radio" name="sex" value="m" checked [(ngModel)]="user.gender" [ngModelOptions]="{standalone: true}">Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" name="sex" value="f" [(ngModel)]="user.gender" [ngModelOptions]="{standalone: true}">Female</td>
+      <td><input type="radio" name="sex" value="male" name="gender" checked [ngModel]="user.gender"  >Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="sex" value="female" name="gender" [ngModel]="user.gender" >Female</td>
     </tr>
     <br>
     <tr>
   <th><label>Address:</label></th>
-  <td><input type="text" class="form-control"  [(ngModel)]="user.address" [ngModelOptions]="{standalone: true}" ></td>
+  <td><input type="text" class="form-control"   name="address" [ngModel]="user.address"  required #address=ngModel>
+    <span class="text-danger" *ngIf="!address.valid && address.touched">Enter valid data</span></td>
     </tr>
     <br>
     <tr>
     <th><label>Phone Number:</label></th>
-  <td><input type="text" class="form-control"   [(ngModel)]="user.phoneNo" [ngModelOptions]="{standalone: true}" ></td>
+  <td><input  type="tel" class="form-control" name="phoneNo" [ngModel]="user.phoneNo"  required minlength="10" #phoneNo=ngModel>
+    <span class="text-danger" *ngIf="!phoneNo.valid && phoneNo.touched">Enter atleast 10 digits</span></td>
     </tr>
   </table>
   <br>
@@ -49,7 +59,7 @@
   <div class="text-center">
     <button
       class="btn btn-primary" type="submit"
-      (click)="editProfile()">Submit</button>
+      [disabled]="!f.valid">Submit</button>
   </div>
 
 </form>

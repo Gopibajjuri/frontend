@@ -24,4 +24,7 @@ export class EducationService {
   public deleteEducationDetails(education: Education){
     return this.http.post(this.url+"/delete",education);
   }
+  public updateEducationDetails(education: Education){
+    return this.http.post(this.url+"/update", education);
+  }
 }

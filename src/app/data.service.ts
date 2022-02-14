@@ -10,7 +10,7 @@ import {Skill} from "./skill";
 export class DataService {
 
   public logincheck=0;
-  public user=new User("username","password","f","l","hl","m","23","m","asd",123)
+  public user=new User("username","password","f","l","hl","m", new Date("2019-01-16"),"m","asd",123)
   public EducationList=[];
   public editEducation=new Education(this.user,'','','','','',0,'','');
 

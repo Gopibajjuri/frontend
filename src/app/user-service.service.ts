@@ -25,7 +25,9 @@ export class UserServiceService {
     return this.http.post<User>(this.userUrl+"/profile/send",user);
   }
   public deleteProfile(user:User){
-    return this.http.post(this.userUrl+"profile/delete",user);
+    return this.http.post(this.userUrl+"/profile/delete",user);
   }
-
+  public updateProfile(user: User):Observable<User>{
+    return this.http.post<User>(this.userUrl+"/profile/update",user);
+  }
 }

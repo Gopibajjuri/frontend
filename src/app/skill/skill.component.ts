@@ -33,6 +33,11 @@ export class SkillComponent implements OnInit {
     this.router.navigate(["/editSkill"]);
   }
 
+  deleteSkill(skill: Skill){
+    this.skillService.deleteSkillDetails(skill).subscribe(body=>{
+      this.router.navigate(["/profile"])
+  })
+  }
 }
 
 

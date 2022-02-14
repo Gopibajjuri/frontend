@@ -19,6 +19,7 @@ export class EducationComponent implements OnInit {
   ngOnInit(): void {
     this.educationService.getEducationDetails(this.dataService.user).subscribe(responseBody => {
       let List = responseBody
+      console.log(List);
       for (let i = 0; i < List.length; i++) {
         let edu = List[i];
         this.EducationList[i] = edu;
@@ -36,4 +37,9 @@ export class EducationComponent implements OnInit {
     this.router.navigate(["/editEducation"]);
   }
 
+  deleteEducation(education: Education){
+    this.educationService.deleteEducationDetails(education).subscribe(responseBody=>{
+      this.router.navigate(["/profile"])
+    });
+  }
 }

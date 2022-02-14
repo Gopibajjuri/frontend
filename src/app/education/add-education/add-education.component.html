@@ -1,35 +1,42 @@
+<button class="btn btn-default" type="submit"
+        (click)="back()">Back</button>
 <h1 class="text-center">Add Education Details</h1>
 <br>
-<form>
+<form (ngSubmit)="addEducation()" #f=ngForm>
   <table class="center">
     <tr>
       <th><label>Organization Name</label></th>
-      <td><input type="text" class="form-control"  [(ngModel)]="school" [ngModelOptions]="{standalone: true}"></td>
+      <td><input type="text" class="form-control"  name="school" ngModel required #school=ngModel>
+        <span class="text-danger" *ngIf="!school.valid && school.touched">Enter valid data</span></td>
     </tr>
     <br>
     <tr>
       <th><label>Degree:</label></th>
-      <td><input type="text" class="form-control"  [(ngModel)]="degree" [ngModelOptions]="{standalone: true}"></td>
+      <td><input type="text" class="form-control"  name="degree" ngModel required #degree=ngModel>
+        <span class="text-danger" *ngIf="!degree.valid && degree.touched">Enter valid data</span></td>
     </tr>
     <br>
     <tr>
       <th><label>Field of Study:</label></th>
-      <td><input type="text" class="form-control"  [(ngModel)]="fieldOfStudy" [ngModelOptions]="{standalone: true}" ></td>
-    </tr>
+      <td><input type="text" class="form-control"  name="fieldOfStudy" ngModel required #fieldOfStudy=ngModel>
+        <span class="text-danger" *ngIf="!fieldOfStudy.valid && fieldOfStudy.touched">Enter valid data</span></td>
     <br>
     <tr>
       <th><label>Start date<p>(in dd/mm/yyyy format):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></label></th>
-      <td><input type="text" class="form-control"  [(ngModel)]="start" [ngModelOptions]="{standalone: true}" ></td>
+    <td><input type="date" class="form-control"  name="start"  ngModel required #start=ngModel>
+      <span class="text-danger" *ngIf="!start.valid && start.touched">Enter valid data</span></td>
     </tr>
     <br>
     <tr>
       <th><label>End Date<p>(in dd/mm/yyyy format):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></label></th>
-      <td><input type="text" class="form-control"  [(ngModel)]="stop" [ngModelOptions]="{standalone: true}"></td>
+      <td><input type="date" class="form-control"  name="stop"  ngModel  required #stop=ngModel>
+        <span class="text-danger" *ngIf="!stop.valid && stop.touched">Enter valid data</span></td>
     </tr>
     <br>
     <tr>
       <th><label>Grade:</label></th>
-      <td><input type="text" class="form-control"   [(ngModel)]="grade" [ngModelOptions]="{standalone: true}"></td>
+      <td><input type="text" class="form-control"   name="grade" ngModel required #grade=ngModel>
+        <span class="text-danger" *ngIf="!grade.valid && grade.touched">Enter valid data</span></td>
     </tr>
 
   </table>
@@ -37,6 +44,6 @@
   <div class="text-center">
     <button
       class="btn btn-primary" type="submit"
-      (click)="addEducation()">submit</button>
+      [disabled]="!f.valid">submit</button>
   </div>
 </form>

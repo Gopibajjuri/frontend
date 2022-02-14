@@ -1,21 +1,19 @@
+<button
+  class="btn btn-default" type="submit"
+  (click)="back()">Back</button>
 <h1 class="text-center" xmlns="http://www.w3.org/1999/html">Add Skill</h1>
-<form>
+<form (ngSubmit)="addSkill()" #f=ngForm>
   <table class="center">
     <tr>
       <th><label>Skill Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
-      <td><input type="text" class="form-control" required [(ngModel)]="skill" [ngModelOptions]="{standalone: true}"  #name="ngModel"></td>
+      <td><input type="text" class="form-control" name="skill" ngModel required #skill="ngModel">
+      <span class="text-danger" *ngIf="!skill.valid && skill.touched">Enter Valid data</span></td>
     </tr>
   </table>
   <br>
   <div class="text-center">
-  <div *ngIf="name.errors?.['required']">
-    <p class="text-danger"> skill is required.</p>
-  </div>
-  <div *ngIf="!(name.errors?.['required'])">
   <button
     class="btn btn-primary" type="submit"
-    (click)="addSkill()">submit</button>
+    [disabled]="!f.valid">Submit</button>
   </div>
-</div>
-
 </form>

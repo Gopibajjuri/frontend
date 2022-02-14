@@ -8,6 +8,7 @@
 .panel-default{
   border-radius: 30px;
   border-color: black;
+  margin-top: 30px;
 }
 .panel-heading{
   border-radius: 30px;

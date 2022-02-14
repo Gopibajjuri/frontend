@@ -21,6 +21,7 @@ import { EditSkillComponent } from './skill/edit-skill/edit-skill.component';
 import { AddSkillComponent } from './skill/add-skill/add-skill.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 
+
 const routes : Routes = [
   { path :'', component : LoginComponent },
   { path :'register', component : RegistrationComponent},
@@ -36,6 +37,7 @@ const routes : Routes = [
   { path :'skill', component : SkillComponent},
   { path :'addSkill', component : AddSkillComponent},
   { path :'editSkill', component : EditSkillComponent}
+
 
 
 ]
@@ -56,13 +58,14 @@ const routes : Routes = [
     EditSkillComponent,
     AddSkillComponent,
     EditProfileComponent,
-
   ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpClientModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled',
+          anchorScrolling: 'enabled',
+          scrollOffset: [0, 64]})
     ],
   providers: [],
   bootstrap: [AppComponent]

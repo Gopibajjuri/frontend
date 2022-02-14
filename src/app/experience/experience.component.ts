@@ -37,6 +37,13 @@ export class ExperienceComponent implements OnInit {
     this.router.navigate(["/editExperience"]);
   }
 
+  deleteExperience(experience: Experience) {
+    this.experienceService.deleteExperienceDetails(experience).subscribe(responseBody=> {
+      this.router.navigate(["/profile"])
+    })
+  }
+
+
 }
 
 

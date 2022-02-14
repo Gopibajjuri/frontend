@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit{
   constructor(private route : ActivatedRoute, private us:UserServiceService, public dataService: DataService, private router: Router) { }
 
   ngOnInit() {
+
     this.dataService.logincheck=0;
     if(this.dataService.user.username=='username'){
       this.router.navigate(['']);

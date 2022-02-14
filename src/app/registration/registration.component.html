@@ -1,51 +1,67 @@
 <button
 class="btn btn-group" type="submit"
 (click)="back()">Back</button>
-
+<div class="text-center">
+<p class="text-danger" *ngIf="i==1">Username Already Exists</p>
+</div>
 <h1 class="text-center">Registration</h1>
 <br>
-<form>
+<form (ngSubmit)="addUser()" #f=ngForm>
   <table class="center">
     <tr>
     <th><label>First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
-  <td><input type="text" class="form-control"   [(ngModel)]="firstName" [ngModelOptions]="{standalone: true}" ></td>
+  <td><input type="text" class="form-control"  name="firstName" ngModel required #firstName=ngModel>
+      <span class="text-danger" *ngIf="!firstName.valid && firstName.touched">Enter valid data</span>
+  </td>
     </tr>
     <br>
     <tr>
     <th><label>Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
-  <td><input type="text" class="form-control"  [(ngModel)]="lastName" [ngModelOptions]="{standalone: true}"></td>
+  <td><input type="text" class="form-control"  name="lastName" ngModel required #lastName=ngModel>
+    <span class="text-danger" *ngIf="!lastName.valid && lastName.touched">Enter valid data</span>
+  </td>
     </tr>
     <br>
     <tr>
       <th><label>Head Line:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
-      <td><input type="text" class="form-control"  [(ngModel)]="headLine" [ngModelOptions]="{standalone: true}" ></td>
+      <td><input type="text" class="form-control"  name="headLine" ngModel required #headLine=ngModel>
+        <span class="text-danger" *ngIf="!headLine.valid && headLine.touched">Enter valid data</span>
+      </td>
     </tr>
     <br>
     <tr>
       <th><label>Mail ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
-      <td><input type="text" class="form-control"  [(ngModel)]="mailId" [ngModelOptions]="{standalone: true}" ></td>
+      <td><input type="" class="form-control"  name="mailId" ngModel required email #mailId=ngModel>
+        <span class="text-danger" *ngIf="!mailId.valid && mailId.touched">Enter valid data</span>
+      </td>
     </tr>
     <br>
     <tr>
       <th><label>Date of Birth<p>(in dd/mm/yyyy format):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></label></th>
-      <td> <input type="text" class="form-control"  [(ngModel)]="dob" [ngModelOptions]="{standalone: true}"></td>
+      <td> <input type="date" class="form-control"  name="dob" ngModel required #dob=ngModel>
+        <span class="text-danger" *ngIf="!dob.valid && dob.touched">Enter valid data</span>
+      </td>
     </tr>
     <br>
     <tr>
       <th> <label>Gender:</label></th>
-      <td><input type="radio" name="sex" value="m" checked [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" name="sex" value="f" [(ngModel)]="gender" [ngModelOptions]="{standalone: true}">Female</td>
+      <td><input type="radio" name="sex" value="male" name="gender" checked ngModel >Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="sex" value="female" name="gender" ngModel>Female</td>
     </tr>
     <br>
     <tr>
       <th><label>Address:</label></th>
-      <td><input type="text" class="form-control"  [(ngModel)]="address" [ngModelOptions]="{standalone: true}"></td>
+      <td><input type="text" class="form-control"  name="address" ngModel required #address=ngModel>
+        <span class="text-danger" *ngIf="!address.valid && address.touched">Enter valid data</span>
+      </td>
     </tr>
     <br>
 
     <tr>
     <th><label>Phone Number:</label></th>
-    <td><input type="text" class="form-control"  [(ngModel)]="phoneNo" [ngModelOptions]="{standalone: true}"></td>
+    <td><input type="tel" class="form-control" name="phoneNo" ngModel required minlength="10" #phoneNo=ngModel>
+      <span class="text-danger" *ngIf="!phoneNo.valid && phoneNo.touched">Enter atleast 10 digits</span>
+    </td>
     </tr>
     <br>
   <tr>
@@ -53,28 +69,39 @@ class="btn btn-group" type="submit"
       <label>Username:</label>
     </th>
     <td>
-      <input type="text" class="form-control"  [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="form-control" name="userName" ngModel required #userName=ngModel>
+      <span class="text-danger" *ngIf="!userName.valid && userName.touched">Enter valid data</span>
     </td>
   </tr>
     <br>
     <tr>
       <th> <label>Enter Password:</label></th>
-      <td> <input type="password" class="form-control"  [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></td>
+      <td> <input type="password" class="form-control" name="password" [(ngModel)]="p" required minlength="8" #password=ngModel>
+        <span class="text-danger" *ngIf="!password.valid && password.touched">Enter valid data</span>
+      </td>
     </tr>
     <br>
     <tr>
       <th><label>Confirm Password:</label></th>
-      <td><input type="password" class="form-control"  [(ngModel)]='cPassword' [ngModelOptions]="{standalone: true}"></td>
+      <td><input type="password" class="form-control" name="cPassword" [(ngModel)]="cP" required  #cPassword=ngModel>
+        <span class="text-danger" *ngIf="!cPassword.valid && cPassword.touched ">Enter valid data</span>
+      </td>
     </tr>
 </table>
-
+<br>
 <div class="text-center">
-  <div *ngIf="password!=cPassword"><p class="text-danger">passwords didn't match</p></div>
-  <br>
-  <div *ngIf="password==cPassword">
+<div *ngIf="cP!=p">
+  <p class="text-danger">not matched</p>
   <button
     class="btn btn-primary" type="submit"
-    (click)="addUser()">Register</button>
-  </div>
+    [disabled]="1">Register</button>
+
 </div>
+  <div *ngIf="cP==p">
+  <button
+    class="btn btn-primary" type="submit"
+    [disabled]="!f.valid">Register</button>
+  </div>
+  </div>
+
 </form>

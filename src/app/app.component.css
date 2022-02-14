@@ -1,11 +1,12 @@
 .container-fluid {
-  padding: 25px;
+  padding: 50px;
   background-color: whitesmoke;
+
 }
 .container{
   border-radius: 5px;
   border: 1px solid #D3D3D3;
-  padding: 25px;
+  padding: 50px;
   background-color: white;
-}
 
+}

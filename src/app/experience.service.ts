@@ -24,4 +24,8 @@ export class ExperienceService {
   public deleteExperienceDetails(experience: Experience){
     return this.http.post(this.url+"/delete",experience);
   }
+
+  updateExperienceDetails(experience: Experience) {
+    return this.http.post(this.url+"/update", experience);
+  }
 }
