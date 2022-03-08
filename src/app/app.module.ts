@@ -5,7 +5,7 @@ import { HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ProfileComponent } from './profile/profile.component';
 import {RouterModule, Routes} from "@angular/router";
 import { RegistrationComponent } from './registration/registration.component';
@@ -62,10 +62,9 @@ const routes : Routes = [
     imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpClientModule,
-        RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled',
-          anchorScrolling: 'enabled',
-          scrollOffset: [0, 64]})
+        RouterModule.forRoot(routes)
     ],
   providers: [],
   bootstrap: [AppComponent]

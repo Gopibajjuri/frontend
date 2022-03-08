@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from "../data.service";
+import {DataService} from "../service/data.service";
 import {Router} from "@angular/router";
-import {ExperienceService} from "../experience.service";
-import {Experience} from "../experience";
-import {Education} from "../education";
+import {ExperienceService} from "../service/experience.service";
+import {Experience} from "../model/experience";
+import {Education} from "../model/education";
 
 @Component({
   selector: 'app-experience',

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {User} from "./user";
+import {User} from "../model/user";
 import {Observable} from "rxjs";
-import {Education} from "./education";
+import {Education} from "../model/education";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,6 @@ export class EducationService {
   public getEducationDetails(user: User): Observable<Education[]> {
     return this.http.post<Education[]>(this.url+"/fetch", user);
   }
-
   public saveEducationDetails(education: Education){
     return this.http.post(this.url+"/send", education);
   }

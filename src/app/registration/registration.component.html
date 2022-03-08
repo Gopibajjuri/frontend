@@ -1,107 +1,106 @@
 <button
-class="btn btn-group" type="submit"
-(click)="back()">Back</button>
+  class="btn btn-group" type="submit"
+  (click)="back()">Back</button>
 <div class="text-center">
-<p class="text-danger" *ngIf="i==1">Username Already Exists</p>
+  <p class="text-danger" *ngIf="userExists==1">Username Already Exists</p>
 </div>
 <h1 class="text-center">Registration</h1>
 <br>
-<form (ngSubmit)="addUser()" #f=ngForm>
+<form (ngSubmit)="addUser()" [formGroup]="signupForm">
   <table class="center">
     <tr>
-    <th><label>First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
-  <td><input type="text" class="form-control"  name="firstName" ngModel required #firstName=ngModel>
-      <span class="text-danger" *ngIf="!firstName.valid && firstName.touched">Enter valid data</span>
-  </td>
+      <th><label>First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
+      <td><input type="text" class="form-control"  id="firstName" formControlName="firstName">
+        <span class="text-danger" *ngIf="!signupForm.get('firstName')?.valid && signupForm.get('firstName')?.touched">Enter valid data</span>
+      </td>
     </tr>
     <br>
     <tr>
-    <th><label>Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
-  <td><input type="text" class="form-control"  name="lastName" ngModel required #lastName=ngModel>
-    <span class="text-danger" *ngIf="!lastName.valid && lastName.touched">Enter valid data</span>
-  </td>
+      <th><label>Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
+      <td><input type="text" class="form-control"  id="lastName" formControlName="lastName">
+        <span class="text-danger" *ngIf="!signupForm.get('lastName')?.valid && signupForm.get('lastName')?.touched">Enter valid data</span>
+      </td>
     </tr>
     <br>
     <tr>
       <th><label>Head Line:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
-      <td><input type="text" class="form-control"  name="headLine" ngModel required #headLine=ngModel>
-        <span class="text-danger" *ngIf="!headLine.valid && headLine.touched">Enter valid data</span>
+      <td><input type="text" class="form-control"  id="headLine" formControlName="headLine">
+        <span class="text-danger" *ngIf="!signupForm.get('headLine')?.valid && signupForm.get('headLine')?.touched">Enter valid data</span>
       </td>
     </tr>
     <br>
     <tr>
       <th><label>Mail ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
-      <td><input type="" class="form-control"  name="mailId" ngModel required email #mailId=ngModel>
-        <span class="text-danger" *ngIf="!mailId.valid && mailId.touched">Enter valid data</span>
+      <td><input type="text" class="form-control"  id="mailId" formControlName="mailId">
+        <span class="text-danger" *ngIf="!signupForm.get('mailId')?.valid && signupForm.get('mailId')?.touched">Enter valid data</span>
       </td>
     </tr>
     <br>
     <tr>
       <th><label>Date of Birth<p>(in dd/mm/yyyy format):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></label></th>
-      <td> <input type="date" class="form-control"  name="dob" ngModel required #dob=ngModel>
-        <span class="text-danger" *ngIf="!dob.valid && dob.touched">Enter valid data</span>
+      <td><input type="date" class="form-control"  id="dob" formControlName="dob">
+        <span class="text-danger" *ngIf="!signupForm.get('dob')?.valid && signupForm.get('dob')?.touched">Enter valid data</span>
       </td>
     </tr>
     <br>
     <tr>
       <th> <label>Gender:</label></th>
-      <td><input type="radio" name="sex" value="male" name="gender" checked ngModel >Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" name="sex" value="female" name="gender" ngModel>Female</td>
+      <td><input type="radio" name="sex" value="male" formControlName="gender">Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="sex" value="female" formControlName="gender">Female</td>
     </tr>
     <br>
     <tr>
       <th><label>Address:</label></th>
-      <td><input type="text" class="form-control"  name="address" ngModel required #address=ngModel>
-        <span class="text-danger" *ngIf="!address.valid && address.touched">Enter valid data</span>
+      <td><input type="text" class="form-control"  id="address" formControlName="address">
+        <span class="text-danger" *ngIf="!signupForm.get('address')?.valid && signupForm.get('address')?.touched">Enter valid data</span>
       </td>
     </tr>
     <br>
 
     <tr>
-    <th><label>Phone Number:</label></th>
-    <td><input type="tel" class="form-control" name="phoneNo" ngModel required minlength="10" #phoneNo=ngModel>
-      <span class="text-danger" *ngIf="!phoneNo.valid && phoneNo.touched">Enter atleast 10 digits</span>
-    </td>
+      <th><label>Phone Number:</label></th>
+      <td><input type="tel" class="form-control"  id="phoneNo" formControlName="phoneNo">
+        <span class="text-danger" *ngIf="!signupForm.get('phoneNo')?.valid && signupForm.get('phoneNo')?.touched">Enter valid data</span>
+      </td>
     </tr>
     <br>
-  <tr>
-    <th>
-      <label>Username:</label>
-    </th>
-    <td>
-      <input type="text" class="form-control" name="userName" ngModel required #userName=ngModel>
-      <span class="text-danger" *ngIf="!userName.valid && userName.touched">Enter valid data</span>
-    </td>
-  </tr>
+    <tr>
+      <th>gra
+        <label>Username:</label>
+      </th>
+      <td><input type="text" class="form-control"  id="username" formControlName="username">
+        <span class="text-danger" *ngIf="!signupForm.get('username')?.valid && signupForm.get('username')?.touched">Enter valid data</span>
+      </td>
+    </tr>
     <br>
     <tr>
       <th> <label>Enter Password:</label></th>
-      <td> <input type="password" class="form-control" name="password" [(ngModel)]="p" required minlength="8" #password=ngModel>
-        <span class="text-danger" *ngIf="!password.valid && password.touched">Enter valid data</span>
+      <td><input type="password" class="form-control"  id="password" formControlName="password">
+        <span class="text-danger" *ngIf="!signupForm.get('password')?.valid && signupForm.get('password')?.touched">Enter valid data</span>
       </td>
     </tr>
     <br>
     <tr>
       <th><label>Confirm Password:</label></th>
-      <td><input type="password" class="form-control" name="cPassword" [(ngModel)]="cP" required  #cPassword=ngModel>
-        <span class="text-danger" *ngIf="!cPassword.valid && cPassword.touched ">Enter valid data</span>
+      <td><input type="password" class="form-control"  id="confirmPassword" formControlName="confirmPassword">
+        <span class="text-danger" *ngIf="!signupForm.get('confirmPassword')?.valid && signupForm.get('confirmPassword')?.touched">Enter valid data</span>
       </td>
     </tr>
-</table>
-<br>
-<div class="text-center">
-<div *ngIf="cP!=p">
-  <p class="text-danger">not matched</p>
-  <button
-    class="btn btn-primary" type="submit"
-    [disabled]="1">Register</button>
+  </table>
+  <br>
+  <div class="text-center">
+    <div *ngIf="signupForm.get('confirmPassword')?.value!=signupForm.get('password')?.value">
+      <p class="text-danger">not matched</p>
+      <button
+        class="btn btn-primary" type="submit"
+        [disabled]="1">Register</button>
 
-</div>
-  <div *ngIf="cP==p">
-  <button
-    class="btn btn-primary" type="submit"
-    [disabled]="!f.valid">Register</button>
-  </div>
+    </div>
+    <div *ngIf="signupForm.get('confirmPassword')?.value==signupForm.get('password')?.value">
+      <button
+        class="btn btn-primary" type="submit"
+        [disabled]="!signupForm.valid">Register</button>
+    </div>
   </div>
 
 </form>

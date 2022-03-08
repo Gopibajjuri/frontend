@@ -2,19 +2,19 @@
   class="btn btn-default" type="submit"
   (click)="back()">Back</button>
 <h1 class="text-center">Edit Skill Details</h1>
-<form (ngSubmit)="editSkill()" #f="ngForm">
+<form (ngSubmit)="editSkill()" [formGroup]="editSkillForm">
   <table class="center">
     <tr>
-      <th><label>Skill Name:
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
-      <td><input type="text" class="form-control" name="skill" [ngModel]="s.skill" required #skill="ngModel">
-      <span class="text-danger" *ngIf="!skill.valid && skill.touched">Enter Valid data</span></td>
-  </tr>
+      <th><label>Skill Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
+      <td><input type="text" class="form-control"  id="skill" formControlName="skill">
+        <span class="text-danger" *ngIf="!editSkillForm.get('skill')?.valid && editSkillForm.get('skill')?.touched">Enter valid data</span>
+      </td>
+    </tr>
   </table>
-<br>
+  <br>
   <div class="text-center" type="submit">
     <button class="btn btn-primary"
-    [disabled]="!f.valid">Submit
+    [disabled]="!editSkillForm.valid">Submit
     </button>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <button class="btn btn-danger"

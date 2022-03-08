@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../user";
-import {DataService} from "../data.service";
+import {User} from "../model/user";
+import {DataService} from "../service/data.service";
 
 @Component({
   selector: 'app-header',

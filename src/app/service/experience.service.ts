@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {User} from "./user";
+import {User} from "../model/user";
 import {Observable} from "rxjs";
-import {Education} from "./education";
-import {Experience} from "./experience";
+import {Education} from "../model/education";
+import {Experience} from "../model/experience";
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class ExperienceService {
     return this.http.post(this.url+"/delete",experience);
   }
 
-  updateExperienceDetails(experience: Experience) {
+  public updateExperienceDetails(experience: Experience) {
     return this.http.post(this.url+"/update", experience);
   }
 }

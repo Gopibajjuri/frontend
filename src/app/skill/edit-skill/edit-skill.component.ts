@@ -1,26 +1,27 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {DataService} from "../../data.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {SkillService} from "../../skill.service";
-import {NgForm} from "@angular/forms";
-import {Skill} from "../../skill";
+import {Component} from '@angular/core';
+import {DataService} from "../../service/data.service";
+import {Router} from "@angular/router";
+import {SkillService} from "../../service/skill.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Skill} from "../../model/skill";
 
 @Component({
   selector: 'app-edit-skill',
   templateUrl: './edit-skill.component.html',
   styleUrls: ['./edit-skill.component.css']
 })
-export class EditSkillComponent implements OnInit {
-  @ViewChild('f') form: NgForm | undefined
-  s=this.dataService.editSkill;
-  constructor(private dataService: DataService, private r: ActivatedRoute, private router: Router, private skillService: SkillService ) { }
-  ngOnInit(): void {
+export class EditSkillComponent {
+  skill=this.dataService.editSkill;
+  editSkillForm: FormGroup
+  constructor(private dataService: DataService, private skillService: SkillService, private router: Router) {
+    this.editSkillForm=new FormGroup({
+      'skill' :new FormControl(this.skill.skill, Validators.required)
+    })
   }
   editSkill(){
-    let skill = new Skill(this.dataService.user, this.form?.value.skill)
-    skill.id=this.dataService.editSkill.id
-    this.skillService.updateSkillDetails(skill).subscribe(response=>{
-      console.log(this.s);
+    let tempSkill = new Skill(this.dataService.user, this.editSkillForm?.value.skill)
+    tempSkill.id=this.skill.id
+    this.skillService.updateSkillDetails(tempSkill).subscribe(response=>{
       this.router.navigate(['/profile']);
     });
   }
@@ -31,7 +32,7 @@ export class EditSkillComponent implements OnInit {
   }
 
   deleteSkill() {
-    this.skillService.deleteSkillDetails(this.s).subscribe(body=>{
+    this.skillService.deleteSkillDetails(this.skill).subscribe(body=>{
       this.router.navigate(['/profile'])
     })
 

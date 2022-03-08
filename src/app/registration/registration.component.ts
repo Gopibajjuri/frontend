@@ -1,10 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {User} from "../user";
+import {Component} from '@angular/core';
+import {User} from "../model/user";
 import {Router} from "@angular/router";
-import {UserServiceService} from "../user-service.service";
-import {RegisterService} from "../register.service";
-import {DataService} from "../data.service";
-import {NgForm} from "@angular/forms";
+import {RegisterService} from "../service/register.service";
+import {DataService} from "../service/data.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-registration',
@@ -12,43 +11,46 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
-  @ViewChild('f') form: NgForm | undefined;
-  genders=['male', 'female'];
-  p='';
-  cP='';
-  i=0;
-  a: string="p";
-  b: string="cP";
+  signupForm: FormGroup
+  userExists=0;
   private error: boolean=false;
-  constructor(private rs:RegisterService, private userService:UserServiceService, private router: Router, private dataService: DataService) {
+  constructor(private registerService:RegisterService, private router: Router, private dataService: DataService) {
+    this.signupForm = new FormGroup({
+      'firstName': new FormControl(null, Validators.required),
+      'lastName': new FormControl(null, Validators.required),
+      'headLine': new FormControl(null, Validators.required),
+      'mailId': new FormControl(null, [Validators.required,Validators.email]),
+      'dob': new FormControl(null, Validators.required),
+      'gender': new FormControl(null, Validators.required),
+      'phoneNo': new FormControl(null, [Validators.required,Validators.minLength(10)]),
+      'address':new FormControl(null,Validators.required),
+      'username': new FormControl(null, Validators.required),
+      'password': new FormControl(null, [Validators.required,Validators.minLength(8)]),
+      'confirmPassword': new FormControl(null, Validators.required),
+    })
   }
-
-
   addUser() {
-    console.log(this.form?.value)
-    let u = new User(this.form?.value.userName, this.form?.value.password, this.form?.value.firstName, this.form?.value.lastName, this.form?.value.headLine, this.form?.value.mailId, this.form?.value.dob, this.form?.value.gender, this.form?.value.address, this.form?.value.phoneNo);
+    let tempUser = new User(this.signupForm?.value.username, this.signupForm?.value.password,
+      this.signupForm?.value.firstName, this.signupForm?.value.lastName, this.signupForm?.value.headLine,
+      this.signupForm?.value.mailId, this.signupForm?.value.dob, this.signupForm?.value.gender,
+      this.signupForm?.value.address, this.signupForm?.value.phoneNo);
 
-    this.rs.save(u).subscribe(responseData => {
+    this.registerService.save(tempUser).subscribe(responseData => {
         let user = responseData
-        this.error = true;
         if (user != null) {
           this.dataService.user = user;
           this.dataService.logincheck = 1;
           this.router.navigate(['']);
         } else {
-          this.i = 1;
+          this.userExists = 1;
         }
-
       },
       error => {
         this.error = true;
-        console.log("Could not register. Account already exists!");
-        this.i=1;
+        this.userExists=1;
       }
     );
   }
-
-
   back(){
     this.router.navigate(['']);
   }

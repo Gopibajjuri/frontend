@@ -2,18 +2,19 @@
   class="btn btn-default" type="submit"
   (click)="back()">Back</button>
 <h1 class="text-center" xmlns="http://www.w3.org/1999/html">Add Skill</h1>
-<form (ngSubmit)="addSkill()" #f=ngForm>
+<form (ngSubmit)="addSkill()" [formGroup]="addSkillForm">
   <table class="center">
     <tr>
       <th><label>Skill Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></th>
-      <td><input type="text" class="form-control" name="skill" ngModel required #skill="ngModel">
-      <span class="text-danger" *ngIf="!skill.valid && skill.touched">Enter Valid data</span></td>
+      <td><input type="text" class="form-control"  id="skill" formControlName="skill">
+        <span class="text-danger" *ngIf="!addSkillForm.get('skill')?.valid && addSkillForm.get('skill')?.touched">Enter valid data</span>
+      </td>
     </tr>
   </table>
   <br>
   <div class="text-center">
   <button
     class="btn btn-primary" type="submit"
-    [disabled]="!f.valid">Submit</button>
+    [disabled]="!addSkillForm.valid">Submit</button>
   </div>
 </form>

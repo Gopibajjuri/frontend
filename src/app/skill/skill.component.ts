@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from "../data.service";
+import {DataService} from "../service/data.service";
 import {Router} from "@angular/router";
-import {Skill} from "../skill";
-import {SkillService} from "../skill.service";
+import {Skill} from "../model/skill";
+import {SkillService} from "../service/skill.service";
 
 @Component({
   selector: 'app-skill',
@@ -28,7 +28,7 @@ export class SkillComponent implements OnInit {
     this.router.navigate(['/addSkill'])
   }
 
-  editDetails(skill: Skill){
+  editSkill(skill: Skill){
     this.dataService.editSkill=skill;
     this.router.navigate(["/editSkill"]);
   }

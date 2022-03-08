@@ -1,27 +1,37 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {DataService} from "../../data.service";
+import {Component} from '@angular/core';
+import {DataService} from "../../service/data.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ExperienceService} from "../../experience.service";
-import {NgForm} from "@angular/forms";
-import {Experience} from "../../experience";
+import {ExperienceService} from "../../service/experience.service";
+import {Experience} from "../../model/experience";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-edit-experience',
   templateUrl: './edit-experience.component.html',
   styleUrls: ['./edit-experience.component.css']
 })
-export class EditExperienceComponent implements OnInit {
-  exp=this.dataService.editExperience;
-  @ViewChild('f') form: NgForm | undefined
-  constructor(private dataService: DataService, private r: ActivatedRoute, private router: Router, private experienceService: ExperienceService ) { }
-  ngOnInit(): void {
+export class EditExperienceComponent{
+  experience=this.dataService.editExperience;
+  editExperienceForm: FormGroup
+  constructor(private dataService: DataService, private r: ActivatedRoute, private router: Router, private experienceService: ExperienceService ) {
+    this.editExperienceForm= new FormGroup({
+      'title': new FormControl(this.experience.title, Validators.required),
+      'companyName': new FormControl(this.experience.companyName, Validators.required),
+      'location': new FormControl(this.experience.location, Validators.required),
+      'start': new FormControl(this.experience.start, Validators.required),
+      'stop': new FormControl(this.experience.stop, Validators.required),
+      'headline': new FormControl(this.experience.headline, Validators.required),
+    })
   }
+
   editExperience(){
-    let e= new Experience(this.dataService.user, this.form?.value.title, this.form?.value.companyName, this.form?.value.location,
-      this.form?.value.start, this.form?.value.stop, this.form?.value.headline);
-    e.id=this.exp.id
-    this.experienceService.updateExperienceDetails(e).subscribe(response => {
-      console.log(this.exp);
+    let tempExperience= new Experience(this.dataService.user, this.editExperienceForm?.value.title,
+      this.editExperienceForm?.value.companyName, this.editExperienceForm?.value.location,
+      this.editExperienceForm?.value.start, this.editExperienceForm?.value.stop,
+      this.editExperienceForm?.value.headline);
+    tempExperience.id=this.experience.id
+    this.experienceService.updateExperienceDetails(tempExperience).subscribe(response => {
+      console.log(this.experience);
       this.router.navigate(['/profile']);
     });
 
@@ -32,7 +42,7 @@ export class EditExperienceComponent implements OnInit {
   }
 
   deleteExperience() {
-    this.experienceService.deleteExperienceDetails(this.exp).subscribe(body=>{
+    this.experienceService.deleteExperienceDetails(this.experience).subscribe(body=>{
       this.router.navigate(['/profile'])
     })
   }

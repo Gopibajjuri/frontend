@@ -1,55 +1,46 @@
-<!--
-<div  style="background-image: url('https://images.ctfassets.net/7thvzrs93dvf/wpImage18643/2f45c72db7876d2f40623a8b09a88b17/linkedin-default-background-cover-photo-1.png?w=790&h=196&q=90&fm=webp');">
--->
-
 <h1 class="text-center" >Welcome To LinkedIn</h1>
 <br>
-
-<form (ngSubmit)="checkDetails()" #f="ngForm">
-  <div *ngIf="i==1">
-
+<form (ngSubmit)="checkDetails()" [formGroup]="loginForm">
+  <div *ngIf="notValidCredentials==1">
     <div class="text-center">
-    <p class="text-danger">Invalid Credentials</p>
+      <p class="text-danger">Invalid Credentials</p>
     </div>
   </div>
-  <div *ngIf="l==1">
-    <p class="text-success">Account successfully created</p>
+  <div *ngIf="check==1">
+    <div class="text-center">
+      <p class="text-success">Account successfully created</p>
+    </div>
   </div>
-
-<table class="center">
-  <tr>
-    <td>
-      <label>Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-    </td>
-    <td>
-      <input type="text" class="form-control" name="username" ngModel required #username="ngModel">
-      <span class="text-danger" *ngIf="!username.valid && username.touched">Enter valid data</span>
-    </td>
-  </tr>
+  <div class="form-group">
+  <table class="center">
+    <tr>
+      <td>
+        <label>Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      </td>
+      <td>
+        <input type="text" id="username" formControlName="username" class="form-control">
+        <span class="text-danger" *ngIf="loginForm.get('username')?.touched && !loginForm.get('username')?.valid">Please enter valid data</span>
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <td>
+        <label>Password:</label>
+      <td>
+        <input type="password"  id="password" formControlName="password" class="form-control">
+        <span class="text-danger" *ngIf="loginForm.get('password')?.touched && !loginForm.get('password')?.valid">Please enter valid data</span>
+      </td>
+    </tr>
+  </table>
   <br>
-  <tr>
-    <td>
-      <label>Password:</label>
-    <td>
-    <input type="password" class="form-control" name="password" ngModel required  #password="ngModel">
-    <span class="text-danger" *ngIf="!password.valid && password.touched">Enter a valid data</span>
-    </td>
-  </tr>
-
-</table>
-<br>
-      <div class="text-center">
-
-          <button
-          class="btn btn-primary" type="submit"
-          [disabled]="!f.valid">login</button>
-
-        <br>
-        <p>(or)</p>
-        <p>To create new account
-        <a href="/register">Register</a></p>
-      </div>
+  <div class="text-center">
+    <button
+      class="btn btn-primary" type="submit"
+      >login</button>
+    <br>
+    <p>(or)</p>
+    <p>To create new account
+      <a href="/register">Register</a></p>
+  </div>
+  </div>
 </form>
-<!--
-</div>
--->

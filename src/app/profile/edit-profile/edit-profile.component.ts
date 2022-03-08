@@ -1,51 +1,45 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
-import {UserServiceService} from "../../user-service.service";
-import {DataService} from "../../data.service";
-import {User} from "../../user";
-import {NgForm} from "@angular/forms";
+import {UserServiceService} from "../../service/user-service.service";
+import {DataService} from "../../service/data.service";
+import {User} from "../../model/user";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.css']
 })
-export class EditProfileComponent implements OnInit {
-
-  @ViewChild('f') form: NgForm | undefined;
-
-  constructor(private router: Router, private userService: UserServiceService, private dataService: DataService) {
-  }
-
+export class EditProfileComponent{
+  profileForm: FormGroup
   user: User = this.dataService.user;
+  constructor(private router: Router, private userService: UserServiceService, private dataService: DataService) {
+    this.profileForm = new FormGroup({
+      'firstName': new FormControl(this.user.firstName, Validators.required),
+      'lastName': new FormControl(this.user.lastName, Validators.required),
+      'headLine': new FormControl(this.user.headLine, Validators.required),
+      'mailId': new FormControl(this.user.mailId, [Validators.required,Validators.email]),
+      'dob': new FormControl(this.user.dob, Validators.required),
+      'gender': new FormControl(this.user.gender, Validators.required),
+      'address':new FormControl(this.user.address,Validators.required),
+      'phoneNo': new FormControl(this.user.phoneNo, [Validators.required,Validators.minLength(10)])
 
-  ngOnInit() {
-
-    console.log(this.user)
+    })
   }
-
   editProfile()
     {
-
-
-        let u = new User(this.user.username, this.user.password, this.form?.value.firstName, this.form?.value.lastName,
-          this.form?.value.headLine, this.form?.value.mailId, this.form?.value.dob, this.form?.value.gender,
-          this.form?.value.address, this.form?.value.phoneNo);
-        u.id=this.user.id;
-        /*let u = new User(this.user.username, this.user.password, this.user.firstName, this.form?.value.lastName,
-          this.form?.value.headLine, this.form?.value.mailId, this.form?.value.dob, this.form?.value.gender,
-          this.form?.value.address, this.form?.value.phoneNo);*/
-        console.log(this.user, u)
-        this.userService.updateProfile(u).subscribe(responseData => {
+        let tempUser = new User(this.user.username, this.user.password, this.profileForm?.value.firstName,
+          this.profileForm?.value.lastName, this.profileForm?.value.headLine, this.profileForm?.value.mailId,
+          this.profileForm?.value.dob, this.profileForm?.value.gender, this.profileForm?.value.address,
+          this.profileForm?.value.phoneNo);
+        tempUser.id=this.user.id;
+        this.userService.updateProfile(tempUser).subscribe(responseData => {
           this.dataService.user = responseData
           if (this.dataService.user != null) {
             this.router.navigate(["/profile"]);
           }
         })
-
     }
-
-
   back() {
     this.router.navigate(["/profile"])
   }
